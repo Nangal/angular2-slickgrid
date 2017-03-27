@@ -399,7 +399,7 @@ export class SlickGrid implements OnChanges, OnInit, OnDestroy, AfterViewInit {
             rowHeight: this._rowHeight,
             defaultColumnWidth: 120,
             editable: this.enableEditing,
-            enableAddRow: false, // TODO change when we support enableAddRow
+            enableAddRow: true, // TODO change when we support enableAddRow
             enableAsyncPostRender: this.enableAsyncPostRender,
             editorFactory: {
                 getEditor: this.getColumnEditor
@@ -450,7 +450,7 @@ export class SlickGrid implements OnChanges, OnInit, OnDestroy, AfterViewInit {
         this.enableEditing = enabled;
         let options: any = this._grid.getOptions();
         options.editable = enabled;
-        options.enableAddRow = false; // TODO change to " options.enableAddRow = false;" when we support enableAddRow
+        options.enableAddRow = true; // TODO change to " options.enableAddRow = false;" when we support enableAddRow
         this._grid.setOptions(options);
     }
 

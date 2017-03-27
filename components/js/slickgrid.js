@@ -381,7 +381,7 @@ let SlickGrid = SlickGrid_1 = class SlickGrid {
             rowHeight: this._rowHeight,
             defaultColumnWidth: 120,
             editable: this.enableEditing,
-            enableAddRow: false,
+            enableAddRow: true,
             enableAsyncPostRender: this.enableAsyncPostRender,
             editorFactory: {
                 getEditor: this.getColumnEditor
@@ -424,7 +424,7 @@ let SlickGrid = SlickGrid_1 = class SlickGrid {
         this.enableEditing = enabled;
         let options = this._grid.getOptions();
         options.editable = enabled;
-        options.enableAddRow = false; // TODO change to " options.enableAddRow = false;" when we support enableAddRow
+        options.enableAddRow = true; // TODO change to " options.enableAddRow = false;" when we support enableAddRow
         this._grid.setOptions(options);
     }
     handleEditorCellChange(rowNumber) {
