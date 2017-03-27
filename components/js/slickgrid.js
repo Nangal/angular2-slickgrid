@@ -517,6 +517,12 @@ let SlickGrid = SlickGrid_1 = class SlickGrid {
                 this._activeEditingRow = undefined;
                 this._activeEditingRowHasChanges = false;
             }
+            let modifiedColumn = this.columnDefinitions[args.cell - 1];
+            this.cellEditExit.emit({
+                column: this.getColumnIndex(modifiedColumn.name),
+                row: args.row,
+                newValue: args.item[modifiedColumn.id]
+            });
         });
     }
     updateColumnWidths() {
