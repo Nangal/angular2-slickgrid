@@ -590,13 +590,7 @@ export class SlickGrid implements OnChanges, OnInit, OnDestroy, AfterViewInit {
 
     private subscribeToCellChanged(): void {
         this._grid.onCellChange.subscribe((e, args) => {
-            let modifiedColumn = this.columnDefinitions[args.cell - 1];
-            this._activeEditingRowHasChanges = true;
-            this.cellEditExit.emit({
-                column: this.getColumnIndex(modifiedColumn.name),
-                row: args.row,
-                newValue: args.item[modifiedColumn.id]
-            });
+            // NO-OP
         });
     }
 
@@ -613,6 +607,14 @@ export class SlickGrid implements OnChanges, OnInit, OnDestroy, AfterViewInit {
     private subscribeToActiveCellChanged (): void {
         // Subscribe to all active cell changes to be able to catch when we tab to the header on the next row
         this._grid.onActiveCellChanged.subscribe((e, args) => {
+
+            let modCol = this.columnDefinitions[args.cell - 1];
+            this._activeEditingRowHasChanges = true;
+            this.cellEditExit.emit({
+                column: this.getColumnIndex(modCol.name),
+                row: args.row,
+                newValue: args.item[modCol.id]
+            });
 
             // If editing is disabled or this isn't the header, ignore. 
             // We assume the header is always column 0, as it is hardcoded to be that way in initGrid
